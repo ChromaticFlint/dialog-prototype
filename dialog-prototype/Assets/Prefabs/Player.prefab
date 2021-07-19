@@ -73,11 +73,11 @@ GameObject:
   - component: {fileID: 4412597136463457324}
   - component: {fileID: 4412597136463457325}
   - component: {fileID: 4412597136463457334}
-  - component: {fileID: 4412597136463457328}
   - component: {fileID: 4412597136463457329}
+  - component: {fileID: 4412597135626725925}
   m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,7 +117,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -183,7 +183,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.20343328}
+  m_Offset: {x: 0.00000047683716, y: 0.20343328}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -194,7 +194,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.59313345}
+  m_Size: {x: 0.971694, y: 0.59313345}
   m_EdgeRadius: 0
 --- !u!58 &4412597136463457334
 CircleCollider2D:
@@ -209,23 +209,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0028290749, y: -0.24}
+  m_Offset: {x: -0.0028290749, y: -0.25}
   serializedVersion: 2
-  m_Radius: 0.24732089
---- !u!114 &4412597136463457328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4412597136463457327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76cf53e3d2ad54521ba4f013a602f1cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 4412597136463457329}
-  moveSpeed: 40
+  m_Radius: 0.2420137
 --- !u!114 &4412597136463457329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,3 +240,18 @@ MonoBehaviour:
   OnCrouchEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4412597135626725925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4412597136463457327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e83d53e8050874e378ce29bc5eff299f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueUI: {fileID: 0}
+  controller: {fileID: 4412597136463457329}
+  moveSpeed: 40
