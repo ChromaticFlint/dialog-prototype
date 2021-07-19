@@ -4,28 +4,58 @@ public class Player : MonoBehaviour
 {
   [SerializeField] private DialogueUI dialogueUI;
 
-  private const float MoveSpeed = 10f;
+  public PlayerController controller;
+  [SerializeField] private float moveSpeed = 40f;
+  private float horizontalMove = 0f;
+  private bool jump = false;
+  private bool crouch = false;
 
   public DialogueUI DialogueUI => dialogueUI;
 
   public IInteractable Interactable { get; set; }
 
-  private Rigidbody2D rb;
-
-  private void Start()
-  {
-    rb = GetComponent<Rigidbody2D>();
-  }
-
   private void Update()
   {
-    Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+    // Prevents movement and functionality past this line if the dialogue is open.
+    if (dialogueUI.IsOpen) return;
 
-    rb.MovePosition(rb.position + input.normalized * (MoveSpeed * Time.fixedDeltaTime));
+    // Input
+    horizontalMove = Input.GetAxisRaw("Horizontal") * moveSpeed;
 
+    // Jump
+    if (Input.GetButtonDown("Jump"))
+    {
+      jump = true;
+    }
+
+    // Crouch
+    if (Input.GetButtonDown("Crouch"))
+    {
+      crouch = true;
+    }
+    else if (Input.GetButtonUp("Crouch"))
+    {
+      crouch = false;
+    }
+
+    // Interaction
     if (Input.GetKeyDown(KeyCode.E))
     {
       Interactable?.Interact(this);
+    }
+  }
+
+  private void FixedUpdate()
+  {
+    controller.Move(horizontalMove * Time.deltaTime, crouch, jump);
+    jump = false;
+  }
+
+  private void OnTriggerEnter2D(Collider2D other)
+  {
+    if (other.CompareTag("Pickup"))
+    {
+      Destroy(other.gameObject);
     }
   }
 }
