@@ -3,6 +3,7 @@ using UnityEngine;
 public class DialogueActivator : MonoBehaviour, IInteractable
 {
   [SerializeField] private DialogueObject dialogueObject;
+  [SerializeField] private GameObject helpIndicator;
 
   public void UpdateDialogueObject(DialogueObject dialogueObject)
   {
@@ -14,6 +15,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
     if (other.CompareTag("Player") && other.TryGetComponent(out Player player))
     {
       player.Interactable = this;
+      helpIndicator.SetActive(true);
     }
   }
 
@@ -24,6 +26,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
       if (player.Interactable is DialogueActivator dialogueActivator && dialogueActivator == this)
       {
         player.Interactable = null;
+        helpIndicator.SetActive(false);
       }
     }
   }
